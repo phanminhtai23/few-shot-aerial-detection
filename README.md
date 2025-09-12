@@ -1,2 +1,2 @@
 # few-shot-aerial-detection
-few-shot object detection for aerial images
+Few-Shot Object Detection for Aerial Images (Remote Sensing, UAV/Satellite)
