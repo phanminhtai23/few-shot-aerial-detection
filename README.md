@@ -89,19 +89,22 @@ SAHI (Slicing Aided Hyper Inference) is an advanced framework designed to addres
 3. **🧩 Merging**: Combine results from tiles and remove duplicate detections
 4. **✨ Post-processing**: Apply global Non-Maximum Suppression (NMS)
 
-### 🚁 Advantages in Aerial Imagery
+### ⚙️ SAHI Configuration
 
--   **🔍 Small Object Detection**: Improves accuracy for objects occupying < 2% of image area
--   **📸 High-Resolution Processing**: Can handle 4K+ drone imagery
--   **💾 Resource Optimization**: Reduces GPU memory requirements during inference
+-   **🔪 Slice Size (slice_height/width)**: The size (in pixels) of each patch that SAHI cuts from the original image
+-   **🔄 Overlap Ratio (overlap_height/width_ratio)**: The portion of each patch that overlaps with adjacent patches, ensuring objects at the edges are not missed
 
 ![SAHI Configuration](config-SAHI.png "SAHI Configuration Parameters")
+
+In this demo, each patch has a size of 512×512 pixels with 20% overlap with surrounding patches.
+
+With slice size of 512×512 pixels and 20% overlap, SAHI cuts large images into patches small enough for YOLO to easily detect small objects in test images. The 20% overlap ensures no objects are missed at patch edges while avoiding excessive patch generation, thus saving computational resources and reducing inference time.
 
 ## 📊 Experimental Results
 
 ### 🧪 Experimental Design
 
-Due to time constraints, experiments were conducted on a single drone test image not included in the training set to evaluate the effectiveness of each stage in the pipeline.
+Due to time constraints, experiments were conducted on a single drone test image (1441x1080 pixels) not included in the training set to evaluate the effectiveness of each stage in the pipeline.
 
 ![Experimental Results](experiment.png "Model Performance Comparison")
 
